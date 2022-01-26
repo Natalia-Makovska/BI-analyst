@@ -1,0 +1,43 @@
+Календарь = 
+ADDCOLUMNS (
+    CALENDAR (min(.....), max(.....)),
+    "Year", YEAR ( [Date] ),
+    "Quarter", FORMAT ( [Date], "Q" ),
+    "Month", SWITCH (
+        MONTH ( [Date] ),
+        1, "Jan",
+        2, "Feb",
+        3, "Mar",
+        4, "Apr",
+        5, "May",
+        6, "Jun",
+        7, "Jul",
+        8, "Aug",
+        9, "Sep",
+        10, "Oct",
+        11, "Nov",
+        12, "Dec"
+    ),
+    "Week", WEEKNUM( [Date], 21),
+    "YearQuarter", FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date], "Q" ),
+    "YearMonth", FORMAT ( [Date], "YYYY" ) & "/M" & FORMAT ( [Date], "MM" ),
+    "DateFull", FORMAT ( [Date], "DD/MM/YYYY" ) & " (" & SWITCH (
+        WEEKDAY( [Date], 2 ),
+        1, "Пн",
+        2, "Вт",
+        3, "Ср",
+        4, "Чт",
+        5, "Пт",
+        6, "Сб",
+        7, "Нд"       
+    ) & ")",
+ "DayAsInteger", WEEKDAY([Date], 2),   
+ "YearWeek",  IF(WEEKNUM([Date], 21) < 5 && WEEKNUM([Date], 2) > 50, YEAR([Date]) + 1,
+			IF(WEEKNUM([Date], 21) > 50 && WEEKNUM([Date], 2) < 5, YEAR([Date]) - 1, YEAR([Date]))
+		) & "/W" & FORMAT(WEEKNUM( [Date], 21), "00"),
+ "DateAsInteger", FORMAT ( [Date], "YYYYMMDD"), 
+ "MonthNumber", MONTH( [Date]),
+ "Day", DAY([Date]),
+ "MonthMM",  "M" & FORMAT ( [Date], "MM" ),
+ "QuarterQ",  "Q" & FORMAT ( [Date], "Q" )
+ )

@@ -1,0 +1,14 @@
+https://charts.finance.ua/ru/currency/cash/-/0/usd
+https://bank.gov.ua/ua/markets/exchangerate-chart?startDate=01.01.2017&endDate=31.12.2019
+
+
+
+Советы:
+
+добавить в конце к ссылке 
+/export?format=csv (если в файле сводные таблицы - добавляем &gid=[страница])
+
+проверить, чтобы в конце не было хвоста
+/edit#gid=0
+
+если каракули, попробовать различные форматы, например, 65001:Юникод (UTF-8)
